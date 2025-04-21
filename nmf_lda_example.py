@@ -23,17 +23,27 @@ def extract_text(file_path):
 documents = []
 documents.append(extract_text('minor-etal.pdf'))
 documents.append(extract_text('garfinkel-etal.pdf'))
-#documents = nltk.tokenize.sent_tokenize(dataset)
 
 #Number of features to consider (i.e., individual token occurrence frequency)
 no_features = 500
 
 #Number of topics
 components = 10
+# check frequency of words
+tokenize = nltk.tokenize.word_tokenize(documents[1])
+doc_nltk = nltk.Text(tokenize)
+doc_nltk.plot(40)
+
+# ID stop words
+stopwords = ["et","al.","the","a","is","'",".","(",")","in","of","and",
+             "for","&",",","as","were","n","that", "al","to","their",
+             "non","doi","no","https","we","with","an","whether","it",
+             "or",":","by","are","be",";"]
 
 ''' NMF '''
 # NMF is able to use tf-idf
-tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+tfidf_vectorizer = TfidfVectorizer(strip_accents="ascii",
+                                   stop_words=stopwords)
 tfidf = tfidf_vectorizer.fit_transform(documents)
 tfidf_feature_names = tfidf_vectorizer.get_feature_names_out()
 
@@ -43,7 +53,8 @@ nmf = NMF(n_components=components, random_state=1, l1_ratio=.5).fit(tfidf)
 
 ''' LDA '''
 # LDA can only use raw term counts for LDA because it is a probabilistic graphical model
-tf_vectorizer = CountVectorizer(stop_words='english')
+tf_vectorizer = CountVectorizer(strip_accents="ascii",
+                                stop_words=stopwords)
 tf = tf_vectorizer.fit_transform(documents)
 tf_feature_names = tf_vectorizer.get_feature_names_out()
 
