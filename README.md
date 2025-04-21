@@ -105,7 +105,7 @@ model continues to iterate this step until it stabilizes.
 
 ### Usage
     from sklearn.feature_extraction.text import TfidVectorizer
-Preprocessing can be accomplished with TfidVectorizer (tf-idf),
+Preprocessing can be accomplished with [TfidVectorizer (tf-idf)](https://www.geeksforgeeks.org/understanding-tf-idf-term-frequency-inverse-document-frequency/),
 which automatically preprocesses the text as in
 the steps listed above ranks the words in the text. Example:
 
