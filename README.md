@@ -16,6 +16,9 @@ Finds common words used nearby the two words
 finds how many times each word is used in a text. Follows the 
 "power law."
 
+### Frequency Distribution
+Determine many times in the text each word is used visually.
+
     abs_freq = FreqDist(nltk_abstract)
     nltk_abstract = Text(wordtokens_abstract)
     abs_freq.plot(30)
