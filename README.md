@@ -96,7 +96,9 @@ NMF will find two non-negative matrices (W,H) whose product approximates
 the original matrix.
 
 Example:
+
 ![NMF diagram](https://media.geeksforgeeks.org/wp-content/uploads/20210429213042/Intuition1-660x298.png "Source: geeksforgeeks.org")
+
 NMF takes original matrix A and splits it into two matrices that
 approximate the solution of matrix A. Values for matrices W and H
 are initialized with random non-negative values and are then
